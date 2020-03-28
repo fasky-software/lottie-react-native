@@ -61,6 +61,7 @@ const propTypes = {
   enableMergePathsAndroidForKitKatAndAbove: PropTypes.bool,
   source: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   onAnimationFinish: PropTypes.func,
+  ignoreTouch: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -71,6 +72,7 @@ const defaultProps = {
   autoSize: false,
   enableMergePathsAndroidForKitKatAndAbove: false,
   resizeMode: 'contain',
+  ignoreTouch: false,
 };
 
 const viewConfig = {
@@ -152,7 +154,7 @@ class LottieView extends React.Component {
   }
 
   render() {
-    const { style, source, autoSize, ...rest } = this.props;
+    const { style, source, autoSize, ignoreTouch, ...rest } = this.props;
 
     const sourceName = typeof source === 'string' ? source : undefined;
     const sourceJson = typeof source === 'string' ? undefined : JSON.stringify(source);
@@ -171,7 +173,10 @@ class LottieView extends React.Component {
         : this.props.speed;
 
     return (
-      <View style={[aspectRatioStyle, sizeStyle, style]} pointerEvents={'none'}>
+      <View
+        style={[aspectRatioStyle, sizeStyle, style]}
+        pointerEvents={ignoreTouch ? 'none' : 'auto'}
+      >
         <AnimatedNativeLottieView
           ref={this.refRoot}
           {...rest}

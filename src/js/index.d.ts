@@ -1,5 +1,5 @@
-declare module "lottie-react-native" {
-  import { Animated, StyleProp, ViewStyle } from "react-native";
+declare module 'lottie-react-native' {
+  import { Animated, StyleProp, ViewStyle } from 'react-native';
   /**
    * Serialized animation as generated from After Effects
    */
@@ -19,7 +19,7 @@ declare module "lottie-react-native" {
   type ColorFilter = {
     keypath: string;
     color: string;
-  }
+  };
 
   /**
    * Properties of the AnimatedLottieView component
@@ -86,7 +86,7 @@ declare module "lottie-react-native" {
      * dimensions.
      * Refer to https://facebook.github.io/react-native/docs/image.html#resizemode
      */
-    resizeMode?: "cover" | "contain" | "center";
+    resizeMode?: 'cover' | 'contain' | 'center';
 
     /**
      * [Android]. Allows to specify kind of cache used for animation. Default value weak.
@@ -118,17 +118,22 @@ declare module "lottie-react-native" {
      * A callback function which will be called when animation is finished. Note that this
      * callback will be called only when `loop` is set to false.
      */
-    onAnimationFinish ?: (isCancelled: boolean) => void;
+    onAnimationFinish?: (isCancelled: boolean) => void;
 
     /**
      * An array of layers you want to override its color filter.
      */
-    colorFilters ?: Array<ColorFilter>;
-    
+    colorFilters?: Array<ColorFilter>;
+
     /**
      * A string to identify the component during testing
      */
     testID?: string;
+
+    /**
+     * A boolean flag indicating whether pass through touch events to underlying elements
+     */
+    ignoreTouch?: boolean;
   }
 
   /**
