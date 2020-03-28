@@ -167,11 +167,11 @@ class LottieView extends React.Component {
 
     const speed =
       this.props.duration && sourceJson && this.props.source.fr
-        ? Math.round(this.props.source.op / this.props.source.fr * 1000 / this.props.duration)
+        ? Math.round(((this.props.source.op / this.props.source.fr) * 1000) / this.props.duration)
         : this.props.speed;
 
     return (
-      <View style={[aspectRatioStyle, sizeStyle, style]}>
+      <View style={[aspectRatioStyle, sizeStyle, style]} pointerEvents={'none'}>
         <AnimatedNativeLottieView
           ref={this.refRoot}
           {...rest}
